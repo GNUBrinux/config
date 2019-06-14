@@ -1,582 +1,269 @@
-;==========================================================
-;
-;
-;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
-;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
-;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
-;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
-;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
-;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
-;
-;
-;   To learn more about how to configure Polybar
-;   go to https://github.com/jaagr/polybar
-;
-;   The README contains alot of information
-;
-;==========================================================
-
-[colors]
-;background = ${xrdb:color0:#222}
-;background = #222
-background = #222D32
-background-alt = #444
-;foreground = ${xrdb:color7:#222}
-foreground = #CFD8DC
-;foreground = #dfdfdf
-foreground-alt = #555
-primary = #2974ff
-secondary = #004ddc
-;secondary = #e60053
-alert = #bd2c40
-
-adapta-cyan = #00BCD4
-adapta-red = #FF5252
-;adapta-yellow = #FFB224
-adapta-yellow = #C9BC0E
-adapta-lightgreen = #4DB6AC
-adapta-green = #009688
-adapta-grey = #475359
-
-[margin]
-for-modules = 1
-
-[bar/top]
-;monitor = ${env:MONITOR:HDMI-1}
-width = 100%
-height = 22
-;offset-x = 1%
-;offset-y = 1%
-radius = 6.0
-fixed-center = true
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 2
-line-color = #f00
-
-border-size = 4
-border-color = #00000000
-
-pzadding-left = 0
-padding-right = 2
-
-module-margin-left = 1
-module-margin-right = 2
-
-font-0 = "Hack Nerd Font:style=Regular:size=10;1"
-font-1 = "Hack Nerd Font Mono:style=Regular:size=9;0"
-font-2 = "FontAwesome:style=Regular:size=10;2"
-;font-0 = fixed:pixelsize=12;1
-;font-1 = unifont:fontformat=truetype:size=10:antialias=false;0
-font-3 = siji:pixelsize=10;0
-font-4 = "UbuntuMono Nerd Font:style=Regular:pixelsize=8;1""
-
-modules-left = i3 
-modules-center = mpd spotify
-modules-right = wlan eth nm-launcher volume xkeyboard date
-;modules-right = filesystem xbacklight alsa xkeyboard memory cpu wlan eth battery temperature date powermenu
-
-;separator = < 
-
-tray-position = right
-tray-padding = 2
-;tray-background = #0063ff
-
-;wm-restack = bspwm
-;wm-restack = i3
-
-override-redirect = false
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
-
-cursor-click = pointer
-cursor-scroll = ns-resize
-
-[bar/bot]
-bottom = true
-width = 100%
-height = 22
-;offset-x = 1%
-;offset-y = 1%
-radius = 6
-fixed-center = false
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 3
-line-color = #f00
-
-border-size = 4
-border-color = #00000000
-
-padding-left = 0
-padding-right = 2
-
-module-margin-left =1
-module-margin-right =2
-
-font-0 = "Hack Nerd Font:style=Regular:size=9;1"
-font-1 = "Hack Nerd Font Mono:style=Regular:size=9;0"
-font-2 = "FontAwesome:style=Regular:size10;2"
-;font-0 = fixed:pixelsize=12;1
-;font-1 = unifont:fontformat=truetype:size=12:antialias=false;0
-font-3 = "siji:pixelsize=10;0"
-
-modules-left = powermenu
-modules-center = xwindow
-modules-right = filesystem xbacklight memory cpu battery temperature 
-
-;separator = <
-
-;tray-position = right
-;tray-padding = 2
-;tray-transparent = true
-;tray-background = #0063ff
-
-;wm-restack = bspwm
-;wm-restack = i3
-
-override-redirect = false
-enable-ipc = true
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
-
-cursor-click = pointer
-cursor-scroll = ns-resize
-
-[module/ubuntu]
-type = custom/text
-content =
-content-padding = 1
-content-foreground = ${colors.foreground}
-content-underline = ${colors.adapta-cyan}
-;click-left = rmenu_1
-;click-right = rmenu_wi_1
-
-[module/explorer]
-type = custom/text
-content = 
-;content = 
-content-padding = 1
-content-foreground = ${colors.foreground}
-click-left = dolphin
-
-[module/xwindow]
-type = internal/xwindow
-label = %title:0:30:...%
-
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
-
-label-layout = %layout%
-label-layout-underline = ${colors.secondary}
-
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
-
-[module/filesystem]
-type = internal/fs
-interval = 25
-
-mount-0 = /
-
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
-label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
-
-[module/bspwm]
-type = internal/bspwm
-
-label-focused = %index%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
-label-focused-padding = 2
-
-label-occupied = %index%
-label-occupied-padding = 2
-
-label-urgent = %index%!
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
-
-label-empty = %index%
-label-empty-foreground = ${colors.foreground-alt}
-label-empty-padding = 2
-
-; Separator in between workspaces
-; label-separator = |
-
-[module/spotify]
-type = custom/script
-interval = 1
-format-prefix = " "
-format = <label>
-exec = python ~/.config/polybar/spotify_status.py -f '{artist}: {song}'
-format-underline = #1db954
-
-[module/i3]
-type = internal/i3
-format = <label-state> <label-mode>
-index-sort = true
-wrapping-scroll = false
-
-; Only show workspaces on the same output as the bar
-;pin-workspaces = true
-
-label-mode-padding = 2
-label-mode-foreground = #000
-label-mode-background = ${colors.primary}
-
-;ws-icon-0 = 1;
-;ws-icon-1 = 2;
-;ws-icon-2 = 3;
-;ws-icon-3 = 4;
-;ws-icon-4 = 5;
-;ws-icon-5 = 6;
-;ws-icon-6 = 7;
-;ws-icon-7 = 8;
-;ws-icon-default = 
-
-; focused = Active workspace on focused monitor
-label-focused = %icon% %name%
-label-focused-background = ${module/bspwm.label-focused-background}
-label-focused-underline = ${module/bspwm.label-focused-underline}
-label-focused-padding = ${module/bspwm.label-focused-padding}
-
-; unfocused = Inactive workspace on any monitor
-label-unfocused = %icon% %name%
-label-unfocused-padding = ${module/bspwm.label-occupied-padding}
-
-; visible = Active workspace on unfocused monitor
-label-visible = %icon% %name%
-label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${self.label-focused-underline}
-label-visible-padding = ${self.label-focused-padding}
-
-; urgent = Workspace with urgency hint set
-label-urgent = %icon% %name%!
-label-urgent-background = ${module/bspwm.label-urgent-background}
-label-urgent-padding = ${module/bspwm.label-urgent-padding}
-
-; Separator in between workspaces
-;label-separator = |
-
-;[module/nm-launcher]
-;type = custom/text
-;content = 
-;click-left = nm-connection-editor
-
-
-[module/mpd]
-type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
-
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
-
-label-song-maxlen = 25
-label-song-ellipsis = true
-
-[module/xbacklight]
-type = internal/xbacklight
-
-format = <label> <bar>
-label = BL
-
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #fff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
-
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
-
-[module/cpu]
-type = internal/cpu
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #004ddc
-label = %percentage:2%%
-
-[module/memory]
-type = internal/memory
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #004ddc
-label = %percentage_used%%
-
-[module/wlan]
-type = internal/network
-interface = wlp3s0
-interval = 3.0
-
-format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #004ddc
-;label-connected = %{A1:nm-applet:}%essid%{A}
-label-connected = %essid%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected = wifi disconnected
-label-disconnected-foreground = ${colors.foreground-alt}
-
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
-
-[module/eth]
-type = internal/network
-interface = enp4s0f2
-interval = 3.0
-
-format-connected-underline = #004ddc
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
-
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
-
-[module/date]
-type = internal/date
-interval = 5
-
-date =
-date-alt = " %Y-%m-%d"
-
-time = %H:%M
-time-alt = %H:%M:%S
-
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #004ddc
-
-label = %date% %time%
-
-[module/pulseaudio]
-type = internal/pulseaudio
-
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL %percentage%%
-label-volume-foreground = ${root.foreground}
-
-label-muted = 🔇 muted
-label-muted-foreground = #666
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
-
-[module/volume]
-type = internal/pulseaudio
-
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL
-label-volume-foreground = ${root.foreground}
-
-format-muted-prefix = " "
-format-muted-foreground = ${colors.alert}
-label-muted =  sound muted
-;label-muted = sound muted
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
-
-[module/alsa]
-type = internal/alsa
-
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL
-label-volume-foreground = ${root.foreground}
-
-format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
-
-[module/battery]
-type = internal/battery
-battery = BAT0
-adapter = AC0
-full-at = 98
-
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = #004ddc
-
-format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
-
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
-
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground-alt}
-animation-discharging-framerate = 750
-
-[module/temperature]
-type = internal/temperature
-thermal-zone = 0
-warn-temperature = 60
-
-format = <ramp> <label>
-format-underline = #004ddc
-format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
-
-label = %temperature-c%
-label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
-
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
-
-[module/powermenu]
-type = custom/menu
-
-expand-right = true
-
-format-spacing = 1
-
-label-open = 
-label-open-foreground = ${colors.secondary}
-label-close =  cancel
-label-close-foreground = ${colors.alert}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = systemctl reboot
-
-menu-2-0 = power off
-menu-2-0-exec = systemctl poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
-
-[module/arrow1]
-
-;grey to Blue
-;type = custom/text
-;content = "%{T2} ⏴%{T-}"
-;content-font = 2
-;content-foreground = ${colors.secondary}
-;content-foreground = #00BDBD
-;content-background = ${colors.background}
-
-[settings]
-screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
-;pseudo-transparency = false
-
-[global/wm]
-margin-top = 5
-margin-bottom = 5
-
-; vim:ft=dosini
-
+# set modifier
+set $super Mod4
+set $alt Mod1
+
+gaps outer 0
+gaps inner 4
+gaps top 0
+
+# set font
+#font pango: Fantasque Nerd Font 9
+#font pango: Noto Sans 12
+font pango: FontAwesome:style=Regular 10
+
+# toggle tiling / floating
+bindsym $alt+space floating toggle
+
+# Use Mouse+$super to drag floating windows to their wanted position
+floating_modifier $super
+
+# start a terminal
+#bindsym $super+Return exec i3-sensible-terminal
+bindsym $super+Return exec alacritty
+
+# start a new chromium-browser window
+bindsym $super+c exec chromium-browser
+
+# start a new dolphin file manager window
+bindsym $super+d exec dolphin
+
+# start dmenu (a program launcher)
+bindsym $super+Shift+space exec i3-dmenu-desktop --dmenu="dmenu -i"
+bindsym $super+space exec rofi -show-icons -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3
+bindsym $super+Tab exec rofi -show-icons -lines 12 -padding 18 -width 60 -location 0 -show window
+
+# common apps keybinds
+bindsym Print exec spectacle
+#bindsym Print exec scrot 'Cheese_%a-%d%b%y_%H.%M.png' -e 'mv $f ~/Immagini/Screenshots'
+bindsym $super+Print exec scrot 'Cheese_%a-%d%b%y_%H.%M.png' -e 'mv $f ~/Immagini/Screenshots' --delay 5
+
+#bindsym $super+l exec i3lock -i ~/.lockscreen.png
+bindsym $super+l exec betterlockscreen -l
+
+#change volume
+bindsym XF86AudioRaiseVolume exec amixer -c 0 set PCM 2dB+
+bindsym XF86AudioLowerVolume exec amixer -c 0 set PCM 2dB-
+bindsym XF86AudioMute exec amixer set Master toggle
+
+#change brightness
+bindsym $super+F6 exec xbacklight -inc 10
+bindsym $super+F5 exec xbacklight -dec 10
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+bindsym XF86KbdBrightnessUp exec xbacklight -inc 10
+bindsym XF86KbdBrightnessDown exec xbacklight -dec 10
+
+#toggle touchpad
+bindsym XF86TouchpadToggle exec ~/.config/toggletouchpad.sh
+
+# music control
+bindsym XF864AudioNext exec mpc next
+bindsym XF86AudioPrev exec mpc prev
+bindsym XF86AudioPlay exec mpc toggle
+bindsym XF86AudioStop exec mpc stop
+
+# kill focused window
+bindsym $super+q kill
+bindsym $alt+F4 kill
+
+# change focus
+bindsym $super+Left focus left
+bindsym $super+Down focus down
+bindsym $super+Up focus up
+bindsym $super+Right focus right
+
+# move focused window
+bindsym $super+Shift+Left move left
+bindsym $super+Shift+Down move down
+bindsym $super+Shift+Up move up
+bindsym $super+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $super+h split h
+
+# split in vertical orientation
+bindsym $super+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $super+f fullscreen toggle
+
+# change container layout split
+bindsym $super+s layout toggle split
+
+# set workspaces
+set $ws1 "1:gen"
+set $ws2 "2:web"
+set $ws3 "3:office"
+set $ws4 "4:calc"
+set $ws5 "5:media"
+set $ws6 "6:dev"
+set $ws7 "7:gaming"
+set $ws8 "8:chat"
+set $ws9 "9:misc"
+
+# switch to workspace
+bindsym $alt+Control+Right workspace next
+bindsym $alt+Control+Left workspace prev
+bindsym $super+1 workspace $ws1
+bindsym $super+2 workspace $ws2
+bindsym $super+3 workspace $ws3
+bindsym $super+4 workspace $ws4
+bindsym $super+5 workspace $ws5
+bindsym $super+6 workspace $ws6
+bindsym $super+7 workspace $ws7
+bindsym $super+8 workspace $ws8
+bindsym $super+9 workspace $ws9
+
+# move focused container to workspace
+bindsym $super+Shift+1 move container to workspace $ws1; workspace $ws1
+bindsym $super+Shift+2 move container to workspace $ws2; workspace $ws2
+bindsym $super+Shift+3 move container to workspace $ws3; workspace $ws3
+bindsym $super+Shift+4 move container to workspace $ws4; workspace $ws4
+bindsym $super+Shift+5 move container to workspace $ws5; workspace $ws5
+bindsym $super+Shift+6 move container to workspace $ws6; workspace $ws6
+bindsym $super+Shift+7 move container to workspace $ws7; workspace $ws7
+bindsym $super+Shift+8 move container to workspace $ws8; workspace $ws8
+bindsym $super+Shift+9 move container to workspace $ws9; workspace $ws9
+
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $super+Shift+r restart
+
+# exit i3
+set $Locker i3lock && sleep 1
+
+set $mode_system System (l) lock, (e) logout, (r) reboot, (s) shutdown, (h) suspend
+mode "$mode_system" {
+    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym e exec --no-startup-id i3exit logout, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym s exec --no-startup-id systemctl poweroff, mode "default"
+    bindsym h exec --no-startup-id i3exit lock && systemctl suspend, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $super+x mode "$mode_system"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+  bindsym Left resize shrink width 5 px or 5 ppt
+  bindsym Down resize grow height 5 px or 5 ppt
+  bindsym Up resize shrink height 5 px or 5 ppt
+  bindsym Right resize grow width 5 px or 5 ppt
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $super+r mode "resize"
+
+# window rules, you can find the window class using xprop
+for_window [class=".*"] border pixel 0
+assign [class=URxvt] $ws1
+assign [class=Firefox] $ws2
+assign [class=Thunar|File-roller] $ws3
+assign [class=mpv] $ws5
+for_window [class=Viewnior|feh|Audacious|File-roller|Lxappearance|Lxtask|Pavucontrol] floating enable
+for_window [class=URxvt|Firefox|mpv|Lxappearance] focus
+for_window [class=Pavucontrol] focus
+
+# Set colors from Xresources
+
+set_from_resource $foreground #CCCCCC
+set_from_resource $background #333333
+set_from_resource $cursor_color #FFFFFF
+
+set_from_resource $base00 color0 #212121
+set_from_resource $base01 color1 #303030
+set_from_resource $base02 color2 #353535
+set_from_resource $base03 color3 #4A4A4A
+set_from_resource $base04 color4 #B2CCD6
+set_from_resource $base05 color5 #EEFFFF
+set_from_resource $base06 color6 #EEFFFF
+set_from_resource $base07 color7 #FFFFFF
+set_from_resource $base08 color8 #F07178
+set_from_resource $base09 color9 #F78C6C
+set_from_resource $base0A color10 #FFCB6B
+set_from_resource $base0B color11 #C3E88D
+set_from_resource $base0C color12 #89DDFF
+set_from_resource $base0D color13 #82AAFF
+set_from_resource $base0E color14 #C792EA
+set_from_resource $base0F color15 #FF5370
+
+# panel
+#bar {
+#   font pango:Fantasque Nerd Font 9
+    #font pango:DejaVu Sans Mono 9
+#    colors {
+#     background #212121
+#     separator  #FFFFFF
+#     statusline $foreground
+# 
+#     # State             Border  BG      Text
+#     #focused_workspace   $base05 $background $foreground
+#     #active_workspace    $base05 $background $foreground
+#     #inactive_workspace  $base03 $background $foreground
+#     #urgent_workspace    $base08 $background $foreground
+#     #binding_mode        $base00 $background $foreground
+#     focused_workspace   $background $background $base03
+#     active_workspace    $background $background $base03
+#     inactive_workspace  $background $background $base08
+#     urgent_workspace    $background $background $base03
+#     binding_mode        $background $background $base05
+#   }
+  #status_command i3status --config /etc/i3status.conf
+  #status_command exec nm-applet
+#  tray_output primary
+#  position top
+#}
+#strip_workspace_numbers yes
+
+
+# Basic color configuration using the Base16 variables for windows and borders.
+# Property Name         Border  BG      Text    Indicator Child Border
+client.focused          $base05 $base0D $base00 $base0D $base0D
+client.focused_inactive $base01 $base01 $base05 $base03 $base01
+client.unfocused        $base01 $base00 $base05 $base01 $base01
+client.urgent           $base08 $base08 $base00 $base08 $base08
+client.placeholder      $base00 $base00 $base05 $base00 $base00
+client.background       $base07
+
+# Exec only at startup
+exec --no-startup-id xsettingsd &
+exec --no-startup-id compton -b
+exec --no-startup-id betterlockscreen -w
+#exec --no-startup-id wal -i .cache/i3lock/current/wall.png
+#exec --no-startup-id setxkbmap eu
+exec --no-startup-id xinput disable 8
+#exec --no-startup-id redshift
+exec --no-startup-id nm-applet
+exec --no-startup-id conky
+#exec --no-startup-id systemctl enable network-manager.service
+exec --no-startup-id /usr/lib/kdeconnectd
+exec --no-startup-id xscreensaver -no-splash
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec --no-startup-id kdeconnect-indicator
+#exec --no-startup-id feh --bg-scale ~/Immagini/Saved_Pictures/atlaswallpaper.jpg
+
+assign [class="(?i)chromium"] $ws2
+assign [class="(?i)chrome"] $ws2
+assign [class="(?i)firefox"] $ws2
+assign [class="(?i)eclipse"] $ws6
+assign [class="(?i)cantata"] $ws5
+assign [class="(?i)vlc"] $ws5
+assign [class="(?i)spotify"] $ws5
+#assign [class="(?i)libreoffice calc"] $ws4
+assign [class="(?i)kcalc"] $ws4
+assign [class="(?i)office"] $ws3
+assign [class="(?i)tor"] $ws2
+assign [class="(?i)kodi"] $ws5
+assign [class="(?i)steam"] $ws7
+assign [class="(?i)lutris"] $ws7
+assign [class="(?i)emacs"] $ws6
+assign [class="(?i)kdevelop"] $ws6
+assign [class="(?i)gimp"] $ws3
+assign [class="(?i)vim"] $ws6
+assign [class="(?i)spotify"] $ws5
+
+#automatically go back and forth
+workspace_auto_back_and_forth no
